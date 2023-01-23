@@ -1,0 +1,21 @@
+   int kthSmallest(int arr[], int l, int r, int k) {
+        //code here
+        priority_queue<int>pq;
+       // first push elements till k in max heap; 
+        for(int i=0; i<k; i++){
+            pq.push(arr[i]);
+        }
+        //then check for remaining elements. if they are < topmost elements in priority queue
+        //pop element for priority queue;
+        //push that element in queue;
+        // at last top element of queue will be answer.
+        for(int i=k; i<=r; i++){
+            
+            if(arr[i] <pq.top()){
+                pq.pop();
+                pq.push(arr[i]);
+            }
+        }
+        
+        return pq.top();
+    }
